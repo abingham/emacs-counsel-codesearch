@@ -6,7 +6,7 @@
 ;; Version: 0.0.1
 ;; Keywords: tools
 ;; URL: https://github.com/abingham/emacs-counsel-codesearch
-;; Package-Requires: ((codesearch "1") (counsel "0.10.0") (ivy "0.10.0"))
+;; Package-Requires: ((codesearch "1") (counsel "0.10.0") (emacs "24") (ivy "0.10.0"))
 
 ;;; License:
 ;;
@@ -31,7 +31,6 @@
 ;; SOFTWARE.
 
 ;;; Commentary:
-
 ;; Description:
 ;;
 ;; Adds support for using codesearch through counsel (ivy).
