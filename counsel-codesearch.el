@@ -3,7 +3,7 @@
 ;; Copyright (C) 2018 Austin Bingham
 
 ;; Author: Austin Bingham <austin.bingham@gmail.com>
-;; Versions: 0.0.1
+;; Version: 0.0.1
 ;; Keywords: tools
 ;; URL: https://github.com/abingham/emacs-counsel-codesearch
 ;; Package-Requires: ((codesearch "1") (counsel "0.10.0") (ivy "0.10.0"))
