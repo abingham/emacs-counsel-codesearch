@@ -99,13 +99,13 @@
           (forward-line (- line-number 1)))))))
 
 ;;;###autoload
-(defun counsel-codesearch (&optional initial-input)
+(defun counsel-codesearch ()
   "Call the \"csearch\" shell command.
 
 INITIAL-INPUT can be given as the initial minibuffer input."
   (interactive)
   (ivy-read "Locate: " #'counsel-codesearch--function
-            :initial-input initial-input
+            :initial-input (thing-at-point 'symbol)
             :dynamic-collection t
             :history #'counsel-locate-history
             :action #'counsel-codesearch--handle-selection
