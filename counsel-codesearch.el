@@ -3,7 +3,7 @@
 ;; Copyright (C) 2018 Austin Bingham
 
 ;; Author: Austin Bingham <austin.bingham@gmail.com>
-;; Version: 0.0.1
+;; Version: 1.0.0
 ;; Keywords: tools
 ;; URL: https://github.com/abingham/emacs-counsel-codesearch
 ;; Package-Requires: ((codesearch "1") (counsel "0.10.0") (emacs "24") (ivy "0.10.0"))
@@ -63,17 +63,13 @@
   :prefix "counsel-codesearch-"
   :group 'tools)
 
-(defcustom counsel-codesearch-mininum-input-length 1
-  "The minimum number of input characters before running a search."
-  :type 'integer)
-
 (defconst counsel-codesearch--match-regex "^\\(.*\\):\\([0-9]+\\):"
   "The regular expression used to find matches in the codesearch output.")
 
 (defun counsel-codesearch--function (str)
   "Execute codesearch to find match for STR."
   (if (< (length str) counsel-codesearch-mininum-input-length)
-      (counsel-more-chars counsel-codesearch-mininum-input-length)
+      (counsel-more-chars)
     (let ((index-file (codesearch--csearchindex default-directory))
           (process-environment (copy-alist process-environment)))
       (setenv "CSEARCHINDEX" (expand-file-name index-file))
