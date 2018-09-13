@@ -68,8 +68,6 @@
 
 (defun counsel-codesearch--function (str)
   "Execute codesearch to find match for STR."
-  (if (< (length str) counsel-codesearch-mininum-input-length)
-      (counsel-more-chars)
     (let ((index-file (codesearch--csearchindex default-directory))
           (process-environment (copy-alist process-environment)))
       (setenv "CSEARCHINDEX" (expand-file-name index-file))
@@ -77,7 +75,7 @@
        (format "%s -n %s"
                codesearch-csearch
                str)))
-    '("" "working...")))
+    '("" "working..."))
 
 (defun counsel-codesearch--handle-selection (selection)
   "Jump to the file/line indicated by SELECTION."
