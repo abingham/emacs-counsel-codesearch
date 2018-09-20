@@ -68,14 +68,15 @@
 
 (defun counsel-codesearch--function (str)
   "Execute codesearch to find match for STR."
+  (unless (< (length str) 1)
     (let ((index-file (codesearch--csearchindex default-directory))
           (process-environment (copy-alist process-environment)))
       (setenv "CSEARCHINDEX" (expand-file-name index-file))
       (counsel--async-command
        (format "%s -n %s"
                codesearch-csearch
-               str)))
-    '("" "working..."))
+               str))))
+  '())
 
 (defun counsel-codesearch--handle-selection (selection)
   "Jump to the file/line indicated by SELECTION."
@@ -99,7 +100,6 @@
 INITIAL-INPUT can be given as the initial minibuffer input."
   (interactive)
   (ivy-read "Locate: " #'counsel-codesearch--function
-            :initial-input (thing-at-point 'symbol)
             :dynamic-collection t
             :history #'counsel-locate-history
             :action #'counsel-codesearch--handle-selection
