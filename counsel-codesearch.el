@@ -70,12 +70,13 @@
   "Execute codesearch to find match for STR."
   (unless (< (length str) 1)
     (let ((index-file (codesearch--csearchindex default-directory))
-          (process-environment (copy-alist process-environment)))
+          (process-envsronment (copy-alist process-environment)))
       (setenv "CSEARCHINDEX" (expand-file-name index-file))
       (counsel--async-command
        (format "%s -n %s"
                codesearch-csearch
-               str))))
+               str)
+       nil nil "*counsel-codesearch*")))
   '())
 
 (defun counsel-codesearch--handle-selection (selection)
